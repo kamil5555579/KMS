@@ -19,4 +19,26 @@ def read_parameters(filename):
         
     return parameters
 
-read_parameters('parameters.txt')
+def write_header(filename, r):
+    """Writes the number of particles to a file."""
+    with open(filename, 'w') as f:
+        f.write(str(len(r)) + '\n')
+
+def write_xyz(filename, r):
+    """Writes the positions of the particles to a file."""
+    with open(filename, 'a') as f:
+        for i in range(len(r)):
+            f.write('Ar ')
+            f.write(' '.join(map(str, r[i])) + '\n')
+        
+def create_output(filename):
+    """Creates a new output file."""
+    with open(filename, 'w') as f:
+        pass
+
+def write_output(filename, t, H, V, T, P):
+    """Writes the output to a file."""
+    with open(filename, 'a') as f:
+        f.write(str(t) + ' ' + str(H) + ' ' + str(V) + ' ' + str(T) + ' ' + str(P) + '\n')
+
+# read_parameters('parameters.txt')
