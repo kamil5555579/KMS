@@ -8,7 +8,7 @@ def mod_rij(ri, rj):
 def mod_ri(ri):
     return np.sqrt(np.sum(ri**2))
 class state:
-    def __init__(self, parameters):
+    def __init__(self, parameters, seed=0):
         self.n = parameters[0]
         self.m = parameters[1]
         self.e = parameters[2]
@@ -31,6 +31,7 @@ class state:
         self.P = 0.0
         self.H = 0.0
         self.T = 0.0
+        np.random.seed(seed)
 
     def initialize_r(self, r):
         b0 = np.array([self.a, 0.0, 0.0])
