@@ -82,11 +82,11 @@ def plot_3d_animation():
         ax.set_title('T = ' + str(T[num]) + ' K')
         return scatter,
 
-    ani = animation.FuncAnimation(fig, update_graph, frames=len(data)//n, interval=50, blit=True)
+    ani = animation.FuncAnimation(fig, update_graph, frames=len(data)//n, interval=200, blit=True)
     ani.save('in_out/animation.gif', writer='imagemagick')
 
     # plt.show()
 
 if __name__ == '__main__':
-    # plot_H_V_T_P()
+    plot_H_V_T_P()
     plot_3d_animation()

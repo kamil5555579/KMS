@@ -56,5 +56,33 @@ def plot_V_a():
     print('V_min =', V_min)
     print('a_min =', a_min)
 
+def plot_P_T():
+    P_arr = np.array([2.8, 13.7, 24.7, 35.2])
+    T_arr = np.array([162.2, 596, 1074.5, 1537.4])
+
+    fig, ax = plt.subplots(1, 1)
+    ax.plot(T_arr, P_arr, 'o')
+    ax.set_title('$P_{avg}(T_{avg})$')
+    ax.set_ylabel('$P_{avg}$ [16.6 atm]')
+    ax.set_xlabel('$T_{avg}$ [K]')
+
+    # linear fit
+
+    m, b = np.polyfit(T_arr, P_arr, 1)
+    T = np.linspace(0, 2000, 100)
+    P = m * T + b
+    ax.plot(T, P, '--', label = 'dopasowanie liniowe')
+
+    print('m =', m)
+    print('b =', b)
+    m_teor = 125 * 1.5 * 8.31e-3 * 0.75 / (np.pi * 2.3* 2.3 * 2.3)
+    print('m_teor =', m_teor)
+
+    P = m_teor * T + b
+    ax.plot(T, P, '--', label = 'krzywa teoretyczna')
+    ax.legend()
+
+    plt.savefig('in_out/P_T.png')
+
 if __name__ == '__main__':
-    plot_V_a()
+    plot_P_T()
